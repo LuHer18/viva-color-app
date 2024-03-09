@@ -1,10 +1,22 @@
+import { Navbar } from "./components/navbar/Navbar"
+import { ColorInputs } from "./components/colorInputs/ColorInputs"
+import { Content } from "./components/content/Content"
+
+import './VivaColor.css'
+import { Layout } from "./components/Layout/Layout"
+
 
 
 const VivaColorApp= () => {
 
   return (
     <>
-      <h1>Hello world</h1>
+      <Navbar/>
+      <Layout>
+        <ColorInputs/>
+        <Content/>
+      </Layout>
+
     </>
   )
 }
