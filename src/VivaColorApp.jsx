@@ -4,6 +4,7 @@ import { Content } from "./components/content/Content"
 
 import './VivaColor.css'
 import { Layout } from "./components/Layout/Layout"
+import { ColorProvider } from "./context/ColorProvider"
 
 
 
@@ -12,10 +13,12 @@ const VivaColorApp= () => {
   return (
     <>
       <Navbar/>
-      <Layout>
-        <ColorInputs/>
-        <Content/>
-      </Layout>
+      <ColorProvider>
+        <Layout>
+          <ColorInputs/>
+          <Content/>
+        </Layout>
+      </ColorProvider>
 
     </>
   )

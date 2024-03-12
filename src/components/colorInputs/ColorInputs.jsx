@@ -1,44 +1,53 @@
-
-
-import { mainColor } from "../../helpers/mainColor"
-import { secundaryColor } from "../../helpers/secundaryColor"
+import { useContext } from "react"
 import { CardColor } from "../CardColor/CardColor"
+import { ColorContext } from "../../context/ColorContex"
 
 export const ColorInputs = () => {
-    const {mainrgbcolor, mainOnChageBlue,mainOnChageGreen, mainOnChangeRed } = mainColor({ r: 0,g: 0,b:0,})
-    const {secundaryRgbColor, secundaryOnChangeBlue, secundaryOnChangeGreen, secundaryOnchangeRed} = secundaryColor({ r: 255,g: 255,b:255,})
-
+    /* const { mainColor,
+        secondColor,
+        onChangeRed,
+        onChangeGreen,
+        onChangeBlue}  = useColor() */
+    
+        const {mainColor,
+            secondColor,
+            onChangeRed,
+            onChangeGreen,
+            onChangeBlue} = useContext(ColorContext)
+    
     const initialColors = [
         {   id: '1',
             name: 'Color principal', 
-            rgbColor: mainrgbcolor,
-            onChangeBlue: mainOnChageBlue,
-            onChangeGreen: mainOnChageGreen,
-            onChangeRed: mainOnChangeRed,
-
+            rgbColor: mainColor,
+            onChangeBlue,
+            onChangeGreen,
+            onChangeRed,
+    
         },
         {   id: '2',
             name: 'Color secundario', 
-            rgbColor: secundaryRgbColor,
-            onChangeBlue: secundaryOnChangeBlue,
-            onChangeGreen: secundaryOnChangeGreen,
-            onChangeRed: secundaryOnchangeRed,
+            rgbColor: secondColor,
+            onChangeBlue,
+            onChangeGreen,
+            onChangeRed
+    
         }
     ]
-    console.log(mainrgbcolor)
-    console.log(secundaryRgbColor)
 
     return (
 
         <>
-            <aside className="flex flex-col justify-center  items-center mx-10 ">
+            
+            <aside className="flex flex-col  mx-5 ">
+                <h1 className="flex w-full gap-2 text-xl font-bold text-gray-600 mb-10">Color inputs</h1>
+                <hr className=" bg-gray-600 h-1 mb-4" />
                 {initialColors.map(color => (
                     
                     <CardColor key={color.id} {...color}/>
 
             
                 ))}
-                
+
             </aside>
         </>
     )

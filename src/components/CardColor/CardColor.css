@@ -1,0 +1,35 @@
+input[type=range] {
+    -webkit-appearance: none;
+    height: 3px;
+    border-radius: 5px;
+    background:rgb(156 163 175);
+    outline: none;
+    margin: 10px 0;
+}
+
+
+/* Estilos para la barra del input de tipo range */
+input[type=range]::-webkit-slider-runnable-track {
+    border-radius: 5px;
+}
+
+/* Estilos para el "thumb" o control deslizante del input de tipo range */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgb(52 211 153);
+    cursor: pointer;
+    border: 2px solid #fff; 
+}
+
+/* Cambiar el color del "thumb" cuando está siendo arrastrado */
+input[type=range]:active::-webkit-slider-thumb {
+    background: rgb(52 211 153);
+}
+
+/* Cambiar el color del "thumb" cuando está enfocado */
+input[type=range]:focus::-webkit-slider-thumb {
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
