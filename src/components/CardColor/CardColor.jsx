@@ -1,9 +1,10 @@
 import './CardColor.css'
+import { FormHexaColor } from './FormHexaColor'
 
-export const CardColor = ({name, id, rgbColor, onChangeRed, onChangeGreen, onChangeBlue, }) => {
+export const CardColor = ({name, id, rgbColor, onChangeRed, onChangeGreen, onChangeBlue, hexaColor, onChangeHexaColor }) => {
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-10">
             <h2 className="text-center text-base font-semibold text-gray-950">{name}</h2>
             <div className="flex items-center justify-between h-10">
                 <label className="flex  gap-2 text-sm font-semibold w-14 text-gray-700">Red</label>
@@ -21,7 +22,7 @@ export const CardColor = ({name, id, rgbColor, onChangeRed, onChangeGreen, onCha
                 <input type="range" min={0} max={255} onChange={(e)=>onChangeBlue(e,id) } value={rgbColor.b} step={1} name="blue" />
             </div>
 
-            <h1>Hexa Value</h1>
+            <FormHexaColor hexaColor={hexaColor} id={id} onChangeHexaColor={onChangeHexaColor}/>
             
         </div>
     )

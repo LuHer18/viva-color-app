@@ -1,6 +1,7 @@
 import { ColorContext } from "./ColorContex"
 import { useState } from "react"
 import { rgbToHexa } from '../helpers/rgbToHexa'
+import { hexaToRgb } from "../helpers/hexaToRgb"
 
 const initialMain = {
     r: 0,
@@ -19,7 +20,7 @@ export const ColorProvider = ({children}) => {
     const [{mainColor, secondColor}, setRgbColor] = useState({mainColor: initialMain, secondColor: initialSecond})
 
     const [{hexaColorMain, hexaColorSecond}, setHexaColor] = useState({hexaColorMain:'#000000', hexaColorSecond: '#FFFFFF'})
-
+    
 
     const onChangeRed = (e, id) => {
             if(id === mainColor.id){
@@ -120,14 +121,64 @@ export const ColorProvider = ({children}) => {
         }
     }
 
+    const onChangeHexaColor = (id, value) => {
+        if(id === mainColor.id){
+            setHexaColor({
+                hexaColorMain: value,
+                hexaColorSecond,
+            })
+
+            if(value.includes('#')){
+                setRgbColor ({
+                    mainColor: hexaToRgb(value.replace('#','0x'), id),
+                    secondColor,
+                })
+
+            }else {
+                setRgbColor ({
+                    mainColor: hexaToRgb(`0x${value}`, id),
+                    secondColor,
+                })
+
+            }
+
+        }else if (id === secondColor.id) {
+            setHexaColor({
+                hexaColorMain,
+                hexaColorSecond: value,
+            })
+
+            if(value.includes('#')){
+                setRgbColor ({
+                    mainColor,
+                    secondColor: hexaToRgb(value.replace('#','0x'), id),
+                })
+
+            }else {
+                setRgbColor ({
+                    mainColor,
+                    secondColor: hexaToRgb(`0x${value}`, id),
+                })
+
+            }
+
+        }
+        
+    }
+
   return (
-    <ColorContext.Provider value={{ mainColor,
-        secondColor,
-        onChangeRed,
-        onChangeGreen,
-        onChangeBlue,
-        hexaColorMain,
-        hexaColorSecond}}>
+    <ColorContext.Provider value={
+        { 
+            mainColor,
+            secondColor,
+            onChangeRed,
+            onChangeGreen,
+            onChangeBlue,
+            hexaColorMain,
+            hexaColorSecond,
+            onChangeHexaColor
+        }
+        }>
     {children}
     </ColorContext.Provider>
   )
