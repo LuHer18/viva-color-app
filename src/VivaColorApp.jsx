@@ -5,6 +5,7 @@ import { Content } from "./components/content/Content"
 import './VivaColor.css'
 import { Layout } from "./components/Layout/Layout"
 import { ColorProvider } from "./context/ColorProvider"
+import {Toaster} from 'sonner'
 
 
 
@@ -19,7 +20,7 @@ const VivaColorApp= () => {
           <Content/>
         </Layout>
       </ColorProvider>
-
+    <Toaster position="bottom-left" richColors/>
     </>
   )
 }

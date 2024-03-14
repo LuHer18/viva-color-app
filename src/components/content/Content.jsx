@@ -1,5 +1,8 @@
 import React, { useContext } from 'react'
 import { ColorContext } from '../../context/ColorContex'
+import { UseProfileCard } from './card-ui/UseProfileCard'
+import { LoginCard } from './card-ui/LoginCard'
+import { PricingCard } from './card-ui/PricingCard'
 
 
 export const Content = () => {
@@ -8,11 +11,17 @@ export const Content = () => {
         hexaColorSecond} = useContext(ColorContext)
     
     return (
-        <article className='mx-10 w-full'>
-            
-            <div className={`w-20 h-20 border border-black `} style={{backgroundColor: hexaColorMain}}>
-                <div className={`w-5 h-5 border border-black`} style={{backgroundColor: hexaColorSecond}}></div>
+        <article className='flex flex-col items-center mx-5 lg:w-full'>
+            <h1 className='flex  text-center gap-2 text-xl font-bold text-gray-600 mb-10'>Elementos UI</h1>
+            <div className=' w-full items-center justify-center flex flex-row flex-wrap gap-3 '>
+                <UseProfileCard hexaColorMain={hexaColorMain} hexaColorSecond = {hexaColorSecond}/>
+                <LoginCard hexaColorMain={hexaColorMain} hexaColorSecond = {hexaColorSecond}/>
+                <PricingCard/>
+                
             </div>
+            
+            
+                   
         </article>
     )
 }

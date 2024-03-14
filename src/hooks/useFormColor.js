@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { checkHexadecimalColor } from '../helpers/checkHexadecimalColor';
+import {toast} from 'sonner'
 
 export const useFormColor = (id, onChangeHexaColor) => {
     const [value, setValue] = useState('');
@@ -11,11 +12,10 @@ export const useFormColor = (id, onChangeHexaColor) => {
     const onSubmit = (e)=> {
         e.preventDefault();
         if( checkHexadecimalColor(value) ){
-            console.log("El color hexadecimal es válido.");
             onChangeHexaColor(id,value)
             setIsActive(false)
         }else{
-            console.log("El color hexadecimal es inválido.");
+            toast.error("El color hexadecimal es inválido.");
             setValue('')
         }
     }
