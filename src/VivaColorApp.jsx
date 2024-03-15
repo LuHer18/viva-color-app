@@ -20,6 +20,7 @@ const VivaColorApp= () => {
           <Content/>
         </Layout>
       </ColorProvider>
+      <footer className="pb-6 h-full text-lg mx-6 border-gray-400 border-t-2 py-5 text-end" > Made by <strong>Luis Herrera</strong></footer>
     <Toaster position="bottom-left" richColors/>
     </>
   )
